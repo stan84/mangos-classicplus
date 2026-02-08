@@ -456,6 +456,7 @@ extern LootStore LootTemplates_Mail;
 extern LootStore LootTemplates_Pickpocketing;
 extern LootStore LootTemplates_Skinning;
 extern LootStore LootTemplates_Disenchant;
+extern LootStore LootTemplates_Prospecting;
 
 void LoadLootTemplates_Creature();
 void LoadLootTemplates_Fishing();
@@ -465,6 +466,7 @@ void LoadLootTemplates_Mail();
 void LoadLootTemplates_Pickpocketing();
 void LoadLootTemplates_Skinning();
 void LoadLootTemplates_Disenchant();
+void LoadLootTemplates_Prospecting();
 
 void LoadLootTemplates_Reference(LootIdSet& ids_set);
 
@@ -480,6 +482,7 @@ inline void LoadLootTables(LootIdSet& ids_set)
     LoadLootTemplates_Pickpocketing();
     LoadLootTemplates_Skinning();
     LoadLootTemplates_Disenchant();
+    LoadLootTemplates_Prospecting();
 
     LoadLootTemplates_Reference(ids_set);
 }

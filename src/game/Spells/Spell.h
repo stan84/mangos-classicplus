@@ -448,6 +448,7 @@ class Spell
         void EffectSelfResurrect(SpellEffectIndex eff_idx);
         void EffectSkinning(SpellEffectIndex eff_idx);
         void EffectCharge(SpellEffectIndex eff_idx);
+	void EffectProspecting(SpellEffectIndex eff_idx);
         void EffectSendTaxi(SpellEffectIndex eff_idx);
         void EffectSummonCritter(SpellEffectIndex eff_idx);
         void EffectKnockBack(SpellEffectIndex eff_idx);

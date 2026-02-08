@@ -60,6 +60,7 @@ enum ProfessionSpells
     MINING_1                       = 2575,
     SKINNING_1                     = 8613,
     TAILORING_1                    = 3908
+    PROSPECTING_1                  = 31252
 };
 
 enum NotableItems

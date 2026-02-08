@@ -107,6 +107,7 @@ enum InventoryResult
     EQUIP_ERR_CANT_EQUIP_REPUTATION              = 64,      // ERR_CANT_EQUIP_REPUTATION
     EQUIP_ERR_TOO_MANY_SPECIAL_BAGS              = 65,      // ERR_TOO_MANY_SPECIAL_BAGS
     EQUIP_ERR_LOOT_CANT_LOOT_THAT_NOW            = 66,      // ERR_LOOT_CANT_LOOT_THAT_NOW
+    EQUIP_ERR_NO_SPLIT_WHILE_PROSPECTING	 = 73,      // ERR_NITERNAL_BAG_ERROR
     // any greater values show as "bag full"
 };
 

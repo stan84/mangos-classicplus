@@ -579,6 +579,7 @@ class ChatHandler
         bool HandleReloadLootTemplatesItemCommand(char* args);
         bool HandleReloadLootTemplatesMailCommand(char* args);
         bool HandleReloadLootTemplatesPickpocketingCommand(char* args);
+        bool HandleReloadLootTemplatesProspectingCommand(char* args);
         bool HandleReloadLootTemplatesReferenceCommand(char* args);
         bool HandleReloadLootTemplatesSkinningCommand(char* args);
         bool HandleReloadMangosStringCommand(char* args);
