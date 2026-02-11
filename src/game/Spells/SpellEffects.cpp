@@ -182,7 +182,7 @@ pEffect SpellEffects[MAX_SPELL_EFFECTS] =
     &Spell::EffectPullTowards,                              // 124 SPELL_EFFECT_PLAYER_PULL              opposite of knockback effect (pulls player twoard caster)
     &Spell::EffectModifyThreatPercent,                      // 125 SPELL_EFFECT_MODIFY_THREAT_PERCENT
     &Spell::EffectUnused,                                   // 126 SPELL_EFFECT_126                      future spell steal effect? now only used one test spell
-    &Spell::EffectUnused,                                   // 127 SPELL_EFFECT_127                      future Prospecting spell, not have spells
+    &Spell::EffectProspecting,                              // 127 SPELL_EFFECT_PROSPECTING              Prospecting spell
     &Spell::EffectUnused,                                   // 128 SPELL_EFFECT_128                      future SPELL_EFFECT_APPLY_AREA_AURA_FRIEND, not have spells
     &Spell::EffectUnused,                                   // 129 SPELL_EFFECT_129                      future SPELL_EFFECT_APPLY_AREA_AURA_ENEMY, now only one test spell
 };
@@ -5422,10 +5422,6 @@ void Spell::EffectTransmitted(SpellEffectIndex eff_idx)
         OnSummon(linkedGO);
 }
 
-void Spell::EffectSkill(SpellEffectIndex /*eff_idx*/)
-{
-    DEBUG_LOG("WORLD: SkillEFFECT");
-}
 
 void Spell::EffectSummonDemon(SpellEffectIndex eff_idx)
 {
@@ -5458,6 +5454,34 @@ void Spell::EffectSummonDemon(SpellEffectIndex eff_idx)
         OnSummon(summon);
     }
 }
+
+void Spell::EffectProspecting(SpellEffectIndex /*eff_idx*/)
+{
+    if (!m_caster->IsPlayer() || !itemTarget)
+        return;
+
+    Player* p_caster = static_cast<Player*>(m_caster);
+
+    if (sWorld.getConfig(CONFIG_BOOL_SKILL_PROSPECTING))
+    {
+        uint32 SkillValue = p_caster->GetSkillValuePure(SKILL_JEWELCRAFTING);
+        uint32 reqSkillValue = itemTarget->GetProto()->RequiredSkillRank;
+        p_caster->UpdateGatherSkill(SKILL_JEWELCRAFTING, SkillValue, reqSkillValue);
+    }
+
+    Loot*& loot = itemTarget->m_loot;
+    delete loot;
+
+    loot = new Loot(p_caster, itemTarget, LOOT_PROSPECTING);
+
+    loot->ShowContentTo(p_caster);
+}
+
+void Spell::EffectSkill(SpellEffectIndex /*eff_idx*/)
+{
+    DEBUG_LOG("WORLD: SkillEFFECT");
+}
+
 
 void Spell::EffectSpiritHeal(SpellEffectIndex /*eff_idx*/)
 {
