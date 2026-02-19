@@ -42,6 +42,9 @@ enum Races
     RACE_GNOME              = 7,
     RACE_TROLL              = 8,
     RACE_GOBLIN             = 9,
+    RACE_BLOODELF	    = 10,
+    RACE_BROKEN		    = 14,
+    RACE_FOREST_TROLL	    = 18,
 };
 
 // max+1 for player race
